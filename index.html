@@ -21,29 +21,359 @@
 			link.href = window.location.search.match( /print-pdf/gi ) ? 'reveal/css/print/pdf.css' : 'reveal/css/print/paper.css';
 			document.getElementsByTagName( 'head' )[0].appendChild( link );
 		</script>
+        <script>
+	        var link = document.createElement( 'link' );
+	        link.rel = 'stylesheet';
+	        link.type = 'text/css';
+	        link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+	        document.getElementsByTagName( 'head' )[0].appendChild( link );
+        </script>
 	</head>
 	<body>
 		<div class="reveal">
 			<div class="slides">
-				<section>Slide 1</section>
-				<section>Slide 2</section>
-			</div>
-		</div>
+				<section>
+                    <h2> QUIC protocol for resource-constraint devices </h2>
+                    <p> <small> MABILLE Florent - August 2019 </small> </p>
+                    <img src="./figures/ucl-logo.jpg" style="float:right; width:25%" />
+                    <img src="./figures/epl-with-text.jpg" style="float:left; width:25%" />
+                    <aside class="notes">
+                        Hello everyone and welcome to this master thesis defence. Today I'll talk about the QUIC protocol for resource-constraint devices.
+                        </aside>
+                </section>
 
-		<script src="reveal/js/reveal.js"></script>
+                <section>
+                    <h3> Motivations of QUIC for resource-constraint devices </h3>
+                    <ul> 
+                        <li class="fragment fade-in"> Handshake delay </li>
+                        <li class="fragment fade-in"> QUIC work in the user space </li>
+                        <li class="fragment fade-in"> Reliability </li>
+                        <li class="fragment fade-in"> Streams multiplexing </li>
+                    </ul>
+                    <aside class="notes">
+                        QUIC newly created protocol to reduce the latency of the web <br />
+                        delay -> connect two host easy <br />
+                        user space -> modifications <br />
+                        Reliability -> Every packet will be received by a retransmission mechanism <br />
+                        Stream multiplexing -> HOL problem <br />
+                    </aside>
+                </section>
 
-		<script>
-			// More info about config & dependencies:
-			// - https://github.com/hakimel/reveal.js#configuration
-			// - https://github.com/hakimel/reveal.js#dependencies
-			Reveal.initialize({
-				dependencies: [
-					{ src: 'reveal/plugin/markdown/marked.js' },
-					{ src: 'reveal/plugin/markdown/markdown.js' },
-					{ src: 'reveal/plugin/notes/notes.js', async: true },
-					{ src: 'reveal/plugin/highlight/highlight.js', async: true }
-				]
-			});
-		</script>
-	</body>
+                <section>
+                    <h2> Resource-constraint devices </h2>
+                    <ul>
+                        <li class="fragment fade-in">
+                            Small device with limited CPU, memory and battery
+                        </li>
+                        <li class="fragment fade-in"> Different applications
+                            <ul>
+                                <li>Collect data</li>
+                                <li>Accomplish an automated task</li>
+                            </ul>
+                        </li>
+                        <li class="fragment fade-in"> Challenges
+                            <ul>
+                                <li> Memory </li>
+                                <li> Power consumption </li>
+                                <li> Communication </li>
+                                <li> Security </li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <aside class="notes">
+                        To complete the different possible tasks, 
+                        there are different challenges. <br /> 
+                        Memory -> use the less memory we can. <br />
+                        Power consumption -> devices can work on a battery. The objective is to reduce the power used by the device and achieve good performance. <br /> 
+                        Communication -> devices have not enough power to reach the server and send data in an efficient way. <br />
+                        Security, devices do not have a lot of resources. As security uses
+lots of resources, we cannot do sophisticated protection on this kind of device.
+                </aside>
+                </section>
+
+                <section>
+                    <h4> Comparison between Normal PC and Raspberry Pi </h4>
+                    <div>
+                        <img src="figures/cpu_rasp.png" style="float:flex;width:50%" />
+                    </div>
+                    <div>
+                        <img src="figures/mem_rasp.png" style="float:flex;width:50%" />
+                    </div>
+                </section>
+
+                <section>
+                    <h2> The target device </h2>
+                    <p> Raspberry Pi 3b+ (CPU clock of 1.4 GHz and a RAM memory of 1GB) </p>
+                    <img src="./figures/rasp.jpg" style="float:right; width:30%" />
+                    <img src="./figures/rasp-logo.png" style="float:left; width:20%" />
+                </section>
+
+                <section>
+                    <h2> QUIC protocol </h2>
+                    <ul class="fragment fade-in">
+                        <li class="fragment fade-in"> Work on top of UDP </li>
+                        <li class="fragment fade-in"> Reliable data transfer </li>
+                        <li class="fragment fade-in"> Fast connection establishment </li>
+                        <li class="fragment fade-in"> Encryption and authentification </li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h2> Automatic benchmark tool </h2>
+                    <ul>
+                        <li class="fragment fade-in">
+                            Deploy a protocol implementations from a Github on different hosts
+                        </li>
+                        <li class="fragment fade-in">
+                            Set up the implementation 
+                        </li>
+                        <li class="fragment fade-in">
+                            Launch different measures (CPU, memory, network analysis, ...) 
+                        </li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h2> Phase </h2>
+                    <ol>
+                        <li class="fragment fade-in"> Installation </li>
+                        <li class="fragment fade-in"> Benchmark </li>
+                        <li class="fragment fade-in"> Collection </li>
+                    </ol>
+                </section>
+
+                <section>
+                    <h2> Configuration file </h2>
+                    <ul>
+                        <li>Hosts</li>
+                        <li>Github </li>
+                        <li>Program dependencies </li>
+                        <li>Scenario</li>
+                </section>
+
+                <section>
+                    <h4> Example of a configuration file </h4>
+                    <img src="figures/config.png" style="width:45%" />
+                </section>
+
+                <section>
+                    <h2> Measured informations </h2>
+                    <ul>
+                        <li class="fragment fade-in">
+                            CPU and memory percentage
+                        </li>
+                        <li class="fragment fade-in">
+                            Network analysis
+                        </li>
+                        <li class="fragment fade-in">
+                            Context switching
+                        </li>
+                        <li class="fragment fade-in">
+                            Information about the memory, thread, ...
+                        </li>
+
+                </section>
+
+                <section>
+                    <h2> Experiments </h2>
+                </section>
+
+                <section>
+                    <h3> Methodology </h3>
+                    <ul>
+                        <li> RPI as the client and server </li>
+                        <li> Run with a Ethernet and a WiFi connection </li>
+                        <li> Two implementations of QUIC 
+                            <ul>
+                                <li> Quic-go </li>
+                                <li> Picoquic </li>
+                            </ul>
+                        </li>
+                        <li> One HTTP/2 with TLS 1.3 in Go to compare (named https-go) </li>
+                        <li> Add some load to simulate task on the Raspberry Pi </li>
+                        <li> Different transfers of file (500 KB, 2 MB and 5 MB) 
+                        </li>
+                    </ul>
+                </section>
+
+                <section>
+                    <table style="width:100%;border: 1px solid white;">
+                        <tr>
+                            <th>Parameter</th>
+                            <th>Values</th>
+                        </tr>
+                        <tr>
+                            <td>Role</td>
+                            <td>Client - Server </td>
+                        </tr>
+                        <tr>
+                            <td>Network connection </td>
+                            <td>WiFi (30 MBps) - Ethernet (300 MBps) </td>
+                        </tr>
+                        <tr>
+                            <td>Number of CPU stress</td>
+                            <td>0 - 4</td>
+                        </tr>
+                        <tr>
+                            <td>File size</td>
+                            <td> 500 KB - 2 MB - 5 MB </td>
+                        </tr>
+                    </table>
+                </section>
+
+                <section>
+                    <h2> Raspberry Pi as the client </h2>
+                </section>
+
+                <section>
+                    <h5> Transfer of a 2 MB file via Ethernet </h5>
+                        <img src="result/eth_2MB.png" style="width:65%"/>
+                </section>
+
+                <section>
+                    <h5> Via WiFi </h5>
+                    <img src="result/wifi_2MB.png" style="width:65%"/>
+                </section>
+
+                <section>
+                    <h2> Analysis </h2>
+                    <ul>
+                        <li class="fragment fade-in">
+                            Picoquic is fast but suffers with the WiFi connection </li>
+                        <li class="fragment fade-in">
+                            Quic-go and https-go uses more memory </li>
+                        <li class="fragment fade-in">
+                            Number of context switch is more important with quic-go </li>
+                        <li class="fragment fade-in">
+                            Quic-go sends and receives a lot of packets 
+                        </li>
+                        <li class="fragment fade-in">
+                            Quic-go does a lot of context switch (1200, 20 for https-go and 10 for 
+                            picoquic)
+                        </li>
+                </section>
+
+                <section>
+                    <h5> Transfer of a 2 MB and 5 MB file via Ethernet</h5>
+                    <img src="result/eth_2Files_1.png" style="width:65%"/>
+                    <img src="result/eth_2Files_2.png" style="width:65%"/>
+                </section>
+
+                <section>
+                    <h5> Via WiFi </h5>
+                    <img src="result/eth_2Files_1.png" style="width:65%"/>
+                    <img src="result/eth_2Files_2.png" style="width:65%"/>
+                </section>
+
+                <section>
+                    <h2> Analysis </h2>
+                    <ul>
+                        <li class="fragment fade-in">
+                            Streams pertubate https-go (high CPU usage, delay for receiving and send 
+                            data)
+                        </li>
+                        <li class="fragment fade-in">
+                            Quic-go and picoquic not affected and send at the same rate
+                        </li>
+                        <li class="fragment fade-in">
+                            4400 context switch for quic-go, 40 for https-go and 12 for picoquic
+                        </li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h6> 2 MB via Ethernet with some load</h6>
+                    <img src="result/eth_load_2MB_1.png" style="width:60%"/>
+                    <img src="result/eth_load_2MB_2.png" style="width:60%"/>
+                </section>
+
+                <section>
+                    <h2> Analysis </h2>
+                    <ul>
+                        <li class="fragment fade-in">
+                            Decrease of the transfer rate, utilization of the CPU
+                        </li>
+                        <li class="fragment fade-in">
+                            Picoquic is still fast in comparison with quic-go and https-go
+                        </li>
+                        <li class="fragment fade-in">
+                            Increase of the context switch made by https-go and quic-go
+                            (306 for quic-go)
+                        </li>
+                    </ul>
+                </section>
+
+
+                <section>
+                    <h2> Raspberry Pi as the server </h2>
+                    <ul>
+                        <li>
+                            PC will request some files (2 MB, 5 MB and 2 MB and 5 MB)
+                        </li>
+                        <li>
+                            RPI will not be stopped and will be benchmark
+                        </li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h5> Via Ethernet </h5>
+                    <img src="result/eth_server.png" style="width:65%"/>
+                </section>
+
+                <section>
+                    <h5> Via WiFi </h5>
+                    <img src="result/eth_server.png" style="width:65%"/>
+                </section>
+
+                <section>
+                    <h2> Analysis </h2>
+                    <ul>
+                        <li class="fragment fade-in">
+                            Picoquic and https-go are fast
+                        </li>
+                        <li class="fragment fade-in">
+                            Quic-go takes a certain before sending the first data
+                        </li>
+                        <li class="fragment fade-in">
+                            Quic-go uses a lot of memory
+                        </li>
+                        <li class="fragment fade-in">
+                            Slowdown when we add some load
+                        </li>
+                    </ul>
+                </section>
+
+
+                <section>
+                    <h2> Summary </h2>
+                </section>
+
+                <section>
+                    <p> Thanks for your attention. </p> 
+                    <p> QUESTIONS ? </p>
+                </section>
+            </div>
+        </div>
+
+        <script src="reveal/js/reveal.js"></script>
+
+        <script>
+            // More info about config & dependencies:
+            // - https://github.com/hakimel/reveal.js#configuration
+            // - https://github.com/hakimel/reveal.js#dependencies
+            Reveal.initialize({
+                dependencies: [
+                    { src: 'reveal/plugin/markdown/marked.js' },
+                    { src: 'reveal/plugin/markdown/markdown.js' },
+                    { src: 'reveal/plugin/notes/notes.js', async: true },
+                    { src: 'reveal/plugin/highlight/highlight.js', async: true }
+                ]
+            });
+            Reveal.configure({ 
+                slideNumber: true,
+                pdfSeparateFragments: false
+            });
+        </script>
+    </body>
 </html>

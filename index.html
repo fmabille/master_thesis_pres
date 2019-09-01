@@ -92,6 +92,13 @@ lots of resources, we cannot do sophisticated protection on this kind of device.
                 </section>
 
                 <section>
+                    <h2> The target device </h2>
+                    <p> Raspberry Pi 3b+ (CPU clock of 1.4 GHz and a RAM memory of 1GB) </p>
+                    <img src="./figures/rasp.jpg" style="float:right; width:30%" />
+                    <img src="./figures/rasp-logo.png" style="float:left; width:20%" />
+                </section>
+
+                <section>
                     <h4> Comparison between Normal PC and Raspberry Pi </h4>
                     <div>
                         <img src="figures/cpu_rasp.png" style="float:flex;width:50%" />
@@ -99,13 +106,6 @@ lots of resources, we cannot do sophisticated protection on this kind of device.
                     <div>
                         <img src="figures/mem_rasp.png" style="float:flex;width:50%" />
                     </div>
-                </section>
-
-                <section>
-                    <h2> The target device </h2>
-                    <p> Raspberry Pi 3b+ (CPU clock of 1.4 GHz and a RAM memory of 1GB) </p>
-                    <img src="./figures/rasp.jpg" style="float:right; width:30%" />
-                    <img src="./figures/rasp-logo.png" style="float:left; width:20%" />
                 </section>
 
                 <section>
@@ -122,13 +122,14 @@ lots of resources, we cannot do sophisticated protection on this kind of device.
                     <h2> Automatic benchmark tool </h2>
                     <ul>
                         <li class="fragment fade-in">
-                            Deploy a protocol implementations from a Github on different hosts
+                            Deploy a protocol implementation from a Github repository
+                            on different hosts
                         </li>
                         <li class="fragment fade-in">
                             Set up the implementation 
                         </li>
                         <li class="fragment fade-in">
-                            Launch different measures (CPU, memory, network analysis, ...) 
+                            Launch different measures (CPU, memory, network analysis, ...) on hosts 
                         </li>
                     </ul>
                 </section>
@@ -181,18 +182,24 @@ lots of resources, we cannot do sophisticated protection on this kind of device.
                 <section>
                     <h3> Methodology </h3>
                     <ul>
-                        <li> RPI as the client and server </li>
-                        <li> Run with a Ethernet and a WiFi connection </li>
-                        <li> Two implementations of QUIC 
+                        <li class="fragment fade-in">
+                        Raspberry Pi as the client and server </li>
+                        <li class="fragment fade-in">
+                        Run with a Ethernet and a WiFi connection </li>
+                        <li class="fragment fade-in">
+                        Two implementations of QUIC 
                             <ul>
                                 <li> Quic-go </li>
                                 <li> Picoquic </li>
                             </ul>
                         </li>
-                        <li> One HTTP/2 with TLS 1.3 in Go to compare (named https-go) </li>
-                        <li> Add some load to simulate task on the Raspberry Pi </li>
-                        <li> Different transfers of file (500 KB, 2 MB and 5 MB) 
+                        <li class="fragment fade-in">
+                        One HTTP/2 with TLS 1.3 in Go to compare (named https-go) </li>
+                        <li class="fragment fade-in">
+                        Different transfers of file (500 KB, 2 MB and 5 MB) 
                         </li>
+                        <li class="fragment fade-in">
+                        Add some load to simulate task on the Raspberry Pi </li>
                     </ul>
                 </section>
 

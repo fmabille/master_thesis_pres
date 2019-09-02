@@ -116,6 +116,12 @@ lots of resources, we cannot do sophisticated protection on this kind of device.
                         <li class="fragment fade-in"> Fast connection establishment </li>
                         <li class="fragment fade-in"> Encryption and authentification </li>
                     </ul>
+                    <aside class="notes">
+                        HOL blocking -> loss of packet blocks the connection
+                        TCP single bytestream abstraction due to sequential delivery, 
+                        biderectionnal byte stream
+                    </aside>
+
                 </section>
 
                 <section>
@@ -235,6 +241,11 @@ lots of resources, we cannot do sophisticated protection on this kind of device.
                 <section>
                     <h5> Transfer of a 2 MB file via Ethernet </h5>
                         <img src="result/eth_2MB.png" style="width:65%"/>
+                        <aside class="notes">
+                            picoquic fast <br />
+                            quic-go and https-go uses more memory <br />
+                            lot of context switch <br />
+                        </aside>
                 </section>
 
                 <section>
@@ -249,8 +260,6 @@ lots of resources, we cannot do sophisticated protection on this kind of device.
                             Picoquic is fast but suffers with the WiFi connection </li>
                         <li class="fragment fade-in">
                             Quic-go and https-go uses more memory </li>
-                        <li class="fragment fade-in">
-                            Number of context switch is more important with quic-go </li>
                         <li class="fragment fade-in">
                             Quic-go sends and receives a lot of packets 
                         </li>
@@ -326,6 +335,10 @@ lots of resources, we cannot do sophisticated protection on this kind of device.
                 <section>
                     <h5> Via Ethernet </h5>
                     <img src="result/eth_server.png" style="width:65%"/>
+                    <aside class="notes">
+                        https-go and picoquic fast <br />
+                        quic-go takes a time due to server utilization ? (crypto, quic state, sending and receiving UDP packet) <br />
+                    </aside>
                 </section>
 
                 <section>
@@ -340,7 +353,7 @@ lots of resources, we cannot do sophisticated protection on this kind of device.
                             Picoquic and https-go are fast
                         </li>
                         <li class="fragment fade-in">
-                            Quic-go takes a certain before sending the first data
+                            Quic-go takes a certain time before sending the first data
                         </li>
                         <li class="fragment fade-in">
                             Quic-go uses a lot of memory
@@ -354,6 +367,12 @@ lots of resources, we cannot do sophisticated protection on this kind of device.
 
                 <section>
                     <h2> Summary </h2>
+                    <aside class="notes">
+                        Tool to benchmark <br />
+                        Analysis (client and sever side, load )
+                        Picoquic is fast but suffer when wifi 
+                        bla bla bla
+                    </aside>
                 </section>
 
                 <section>
